@@ -1,0 +1,23 @@
+componentDidMount() {
+    const { id } = this.props;
+    getComments(id).catch(err => {
+      console.log(err, '<<<<<<<');
+      const {
+        response: { status, statusText}
+      } = err;
+      this.setState((currentState) => {
+        const updatedState = {
+        hasError: true,
+        errorMessage: `no comments found...${status} ${statusText}`,
+        isLoading: false,
+        comments: [...currentState.comments]
+      }
+      return updatedState
+    })
+  })
+    this.setState((newData) => {
+const updatedState ={newData, isLoading: false 
+      }
+      return updatedState
+    });
+  }
