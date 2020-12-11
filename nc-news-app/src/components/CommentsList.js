@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { getComments } from "../api";
 import Loading from "./Loading";
 import CommentCard from "./CommentCard";
-import CommentAdder from './CommentAdder'
+import CommentAdder from "./CommentAdder";
 
 class CommentsList extends Component {
   state = {
@@ -19,11 +19,11 @@ class CommentsList extends Component {
 
   addComment = (postedComment) => {
     this.setState((currentState) => {
-      const newComments = [postedComment, ...currentState.comments]
-      const newState = { comments: newComments}
-      return newState
-    })
-  }
+      const newComments = [postedComment, ...currentState.comments];
+      const newState = { comments: newComments };
+      return newState;
+    });
+  };
 
   render() {
     const { comments, isLoading } = this.state;
@@ -32,11 +32,15 @@ class CommentsList extends Component {
     } else {
       return (
         <main>
-        <CommentAdder addComment={this.addComment} id={this.props.id}/>
+          <CommentAdder addComment={this.addComment} id={this.props.id} />
           <ul>
-            {comments.map((comment) => {
-              return <CommentCard key={comment.comment_id} {...comment} />
-             })}
+            {comments[0] === undefined ? (
+              <p>no comments yet...be the first!</p>
+            ) : (
+              comments.map((comment) => {
+                return <CommentCard key={comment.comment_id} {...comment} />;
+              })
+            )}
           </ul>
         </main>
       );

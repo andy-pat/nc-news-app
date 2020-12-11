@@ -39,6 +39,7 @@ export const getComments = (id, sortby, order) => {
       },
     })
     .then(({ data }) => {
+      console.log(data);
       return data;
     });
 };
@@ -52,17 +53,15 @@ export const votePatch = (type, id, vote) => {
 };
 
 export const postArticle = (newArticle) => {
-  return nonuNewsApi
-  .post(`/articles`, newArticle)
-  .then(({data}) => {
-    return data.article[0]
-  })
-}
+  return nonuNewsApi.post(`/articles`, newArticle).then(({ data }) => {
+    return data.article[0];
+  });
+};
 
 export const postComment = (id, newComment) => {
   return nonuNewsApi
-  .post(`/articles/${id}/comments`, newComment)
-  .then(({data}) => {
-    return data.comment[0]
-  })
-}
+    .post(`/articles/${id}/comments`, newComment)
+    .then(({ data }) => {
+      return data.comment[0];
+    });
+};
