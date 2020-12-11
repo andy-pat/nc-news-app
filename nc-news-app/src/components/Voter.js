@@ -6,35 +6,35 @@ class Voter extends Component {
     inc_votes: 0,
     votes: +this.props.votes,
   };
-  
+
   handleClick = (event) => {
-    const { type } = this.props
+    const { type } = this.props;
     const { id } = this.props;
     const vote = +event.target.value;
     this.setState((currentState) => {
       const newState = {
-        votes : currentState.votes + vote
-      }
-      return newState
-    })
+        votes: currentState.votes + vote,
+      };
+      return newState;
+    });
     votePatch(type, id, vote).then((data) => {
       this.setState({
-         inc_votes: 0,
-         votes: data.votes,
+        inc_votes: 0,
+        votes: data.votes,
+      });
     });
-    })
   };
 
   render() {
     const { votes } = this.state;
     return (
       <div>
-        <button onClick={this.handleClick} value='1'>
-          up
+        <button onClick={this.handleClick} value="1">
+          ˄
         </button>
         <p>{votes} votes</p>
-        <button onClick={this.handleClick} value='-1'>
-          down
+        <button onClick={this.handleClick} value="-1">
+          &#709;
         </button>
       </div>
     );

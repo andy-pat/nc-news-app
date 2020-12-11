@@ -15,8 +15,8 @@ export const getArticles = (topic_slug, sortby, order) => {
     .get("/articles", {
       params: {
         topic: topic_slug,
-        sortby,
-        order,
+        sortby: sortby,
+        order: order,
       },
     })
     .then(({ data }) => {

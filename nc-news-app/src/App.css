@@ -4,12 +4,14 @@
 
 .article-card {
   list-style: none;
+  margin: 0;
   display: grid;
   border: 2px solid #282c34;
-  grid-template-columns: 10% 90%;
-  grid-template-areas: "votes content";
-  grid-template-rows: "votes card-info";
-
+  grid-template-columns: 15% 85%;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "votes title"
+    "votes info";
   height: fit-content;
 }
 .votes {
@@ -18,16 +20,17 @@
   grid-area: votes;
   border: 2px solid #224faa;
 }
-.content {
+.title {
   display: flex;
   flex-direction: column;
-  grid-area: content;
+  grid-area: title;
   border: 2px solid #282c34;
 }
-.card-info {
+
+.info {
   display: flex;
   flex-direction: column;
-  grid-area: card-info;
+  grid-area: info;
   border: 2px solid #282c34;
 }
 

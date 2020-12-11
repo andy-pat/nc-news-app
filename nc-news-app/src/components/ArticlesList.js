@@ -3,7 +3,7 @@ import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 import Loading from "./Loading";
 import Sort from "./Sort";
-import ArticleAdder from './ArticleAdder'
+import ArticleAdder from "./ArticleAdder";
 
 class ArticlesList extends Component {
   state = {
@@ -28,9 +28,9 @@ class ArticlesList extends Component {
     const newSortBy = prevState.sortby !== sortby;
     const newOrder = prevState.order !== order;
     if (newTopic || newSortBy || newOrder) {
-      this.setState({isLoading: true})
+      this.setState({ isLoading: true });
       getArticles(topic_slug, sortby, order).then((newData) => {
-        this.setState({ newData, isLoading: false });
+        this.setState({ articles: newData, isLoading: false });
       });
     }
   }
@@ -41,12 +41,12 @@ class ArticlesList extends Component {
 
   addArticle = (postedArticle) => {
     this.setState((currentState) => {
-      const newArticles = [postedArticle, ...currentState.articles ]
-      const newState = { articles : newArticles }
-      return newState
-    })
+      const newArticles = [postedArticle, ...currentState.articles];
+      const newState = { articles: newArticles };
+      return newState;
+    });
   };
-  
+
   render() {
     const { articles, isLoading } = this.state;
     const { topic_slug } = this.props;
