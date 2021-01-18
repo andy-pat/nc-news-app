@@ -21,3 +21,27 @@ const updatedState ={newData, isLoading: false
       return updatedState
     });
   }
+
+
+<input
+        name="topic"
+        ref={register({ required: true })}
+        placeholder="new topic"
+      />
+  <label>
+        New Topic?
+        <input name="topic" />
+      </label>
+      <button type="button" onClick={myFunction()}>
+        Add Topic
+      </button>
+      <br />
+
+      <script>
+        {function myFunction() {
+          var x = document.getElementById("topic");
+          var option = document.createElement("option");
+          option.text = "Kiwi";
+          x.add(option);
+        }}
+      </script>

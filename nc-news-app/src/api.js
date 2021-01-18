@@ -65,3 +65,11 @@ export const postComment = (id, newComment) => {
       return data.comment[0];
     });
 };
+
+export const deleteArticle = (article_id) => {
+  return nonuNewsApi.delete(`/articles/${article_id}`);
+};
+
+export const deleteComment = (comment_id) => {
+  return nonuNewsApi.delete(`/comments/${comment_id}`);
+};

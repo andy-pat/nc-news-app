@@ -5,10 +5,11 @@ import { Router } from "@reach/router";
 import Nav from "./components/Nav";
 import ArticlesList from "./components/ArticlesList";
 import Article from "./components/Article";
+import ErrorMessage from "./components/ErrorMessage";
 
 class App extends React.Component {
   state = {
-    loggedInUser: "jessjelly",
+    loggedInUser: "grumpy19",
   };
 
   render() {
@@ -18,9 +19,13 @@ class App extends React.Component {
         <Header loggedInUser={loggedInUser} />
         <Nav />
         <Router>
-          <ArticlesList path="/" />
-          <ArticlesList path="/topics/:topic_slug" />
-          <Article path="/article/:id" />
+          <ArticlesList path="/" loggedInUser={loggedInUser} />
+          <ArticlesList
+            path="/topics/:topic_slug"
+            loggedInUser={loggedInUser}
+          />
+          <Article path="/article/:id" loggedInUser={loggedInUser} />
+          <ErrorMessage default />
         </Router>
       </div>
     );

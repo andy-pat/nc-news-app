@@ -20,7 +20,7 @@ class Article extends Component {
 
   render() {
     const { article, isLoading } = this.state;
-    const { id } = this.props;
+    const { id, loggedInUser } = this.props;
     if (isLoading) {
       return <Loading />;
     } else {
@@ -28,9 +28,9 @@ class Article extends Component {
         <main>
           <div className="article-card">
             <div className="votes">
-              <Voter type={'articles'} id={id} votes={article.votes}/>
+              <Voter type={"articles"} id={id} votes={article.votes} />
             </div>
-            <div className="content">
+            <div className="body">
               <h2>{article.title}</h2>
               <p>{article.body}</p>
               <div className="card-info">
@@ -40,7 +40,7 @@ class Article extends Component {
               </div>
             </div>
           </div>
-          <CommentsList key={id} id={id} />
+          <CommentsList key={id} id={id} loggedInUser={loggedInUser} />
         </main>
       );
     }

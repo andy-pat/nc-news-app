@@ -5,8 +5,6 @@
     rgba(107, 211, 193, 0.856),
     rgb(219, 219, 219)
   );
-  height: 100%;
-  width: 100%;
 }
 
 /* links css */
@@ -23,7 +21,7 @@ a:hover {
 .article-card {
   list-style: none;
   display: grid;
-  grid-template-columns: minmax(min-content, 10%) 85%;
+  grid-template-columns: 15% 85%;
   grid-template-rows: auto auto;
   grid-template-areas:
     "votes title"
@@ -34,13 +32,13 @@ a:hover {
   display: flex;
   flex-direction: column;
   grid-area: votes;
-  align-items: center;
 
   /* margin-top: auto; */
 }
 p.votes {
-  display: block;
-  margin-block-start: 0px 0px 0px;
+  margin-block-end: 0px;
+  margin-right: 6px;
+  margin-top: 2px;
 }
 .votes button {
   background-color: rgba(0, 0, 255, 0.075);
@@ -82,7 +80,7 @@ p.votes {
 p {
   display: block;
   margin-block-start: 0px;
-  margin-block-end: 0em;
+  margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
 }
@@ -93,7 +91,6 @@ p {
 
 textarea {
   resize: none;
-  margin: 1em;
 }
 ul {
   margin: 0px;

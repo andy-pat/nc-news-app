@@ -49,7 +49,7 @@ class ArticlesList extends Component {
 
   render() {
     const { articles, isLoading } = this.state;
-    const { topic_slug } = this.props;
+    const { topic_slug, loggedInUser } = this.props;
     return (
       <main>
         <h2>{topic_slug || "All"}</h2>
@@ -58,11 +58,20 @@ class ArticlesList extends Component {
         {isLoading ? (
           <Loading />
         ) : (
-          <main>
-            <ArticleAdder addArticle={this.addArticle} />
+          <main className="list">
+            <ArticleAdder
+              addArticle={this.addArticle}
+              loggedInUser={loggedInUser}
+            />
             <ul>
               {articles.map((article) => {
-                return <ArticleCard key={article.article_id} {...article} />;
+                return (
+                  <ArticleCard
+                    article_id={article.article_id}
+                    {...article}
+                    loggedInUser={loggedInUser}
+                  />
+                );
               })}
             </ul>
           </main>
